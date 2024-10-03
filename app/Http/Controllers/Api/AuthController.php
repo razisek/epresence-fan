@@ -35,7 +35,7 @@ class AuthController extends Controller
                 ],
             ]);
         } catch (Exception $e) {
-            Log::error('Auth.login', ['error' => $e, 'request' => $request]);
+            Log::error('Auth.login', ['error' => $e, 'request' => $request->all()]);
 
             return response()->json([
                 'status' => 'error',
@@ -66,7 +66,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'status' => 'error',
-                'message' => 'An error occurred during login',
+                'message' => 'An error occurred during logout',
                 'error' => $e->getMessage()
             ], 500);
         }
